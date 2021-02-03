@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { SafeAreaView, ScrollView } from 'react-native';
-
 import { Home_Styles, Home_Text } from './style';
 
 export default function Home() {
