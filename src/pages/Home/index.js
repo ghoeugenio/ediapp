@@ -1,6 +1,7 @@
 import React from 'react';
+import { ScrollView, Text } from 'react-native';
 
-import { Home_Styles, Home_Text } from './style';
+import styles from './style';
 
 export default function Home() {
 
@@ -9,11 +10,11 @@ export default function Home() {
 
     return (
         //<SafeAreaView>
-        <Home_Styles>
-            <Home_Text>
+        <ScrollView style={styles.container}>
+            <Text style={styles.text}>
                 {semana[d.getDay()]}
-            </Home_Text>
-        </Home_Styles>
+            </Text>
+        </ScrollView>
         //</SafeAreaView>
 
     );
