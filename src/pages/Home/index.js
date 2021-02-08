@@ -1,10 +1,10 @@
 import React from 'react';
-import { ScrollView, Text, View, TouchableOpacity } from 'react-native';
 
+import { ScrollView, Text, View, TouchableOpacity, Button } from 'react-native';
 
 import styles from './style';
 
-export default function Home() {
+const Home = ({ navigation }) => {
 
     var semana = ["Domingo", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"];
     var mes = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -23,8 +23,8 @@ export default function Home() {
         }
     }
 
-
     return (
+
         <ScrollView style={styles.container}>
 
             <View>
@@ -43,7 +43,7 @@ export default function Home() {
                 </Text>
             </View>
 
-            <TouchableOpacity style={styles.buttonGT}>
+            <TouchableOpacity style={styles.buttonGT} onPress={() => navigation.navigate('Cadastro')}>
                 <Text style={styles.buttonGText}>
                     GERAR TREINO
                     </Text>
@@ -56,3 +56,5 @@ export default function Home() {
         </ScrollView>
     );
 }
+
+export default Home;
