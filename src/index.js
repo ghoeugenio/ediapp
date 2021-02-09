@@ -2,11 +2,15 @@ import React from 'react';
 
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import { StatusBar, Text, TouchableOpacity, Button, View } from 'react-native';
+
+import { HomeStackNavigator, CadastroStackNavigator } from './navigation/StackNavigation';
 
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastros';
@@ -41,6 +45,17 @@ function MyStack() {
     );
 }
 
+const Tab = createBottomTabNavigator();
+
+const BottomTabNavigator = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomeStackNavigator} />
+            <Tab.Screen name="Cadastro" component={CadastroStackNavigator} />
+        </Tab.Navigator>
+    );
+};
+
 export default function App() {
 
     return (
@@ -53,7 +68,7 @@ export default function App() {
                 backgroundColor="#101010"
                 translucent={true} />
 
-            <MyStack />
+            <BottomTabNavigator />
 
         </NavigationContainer>
     );
