@@ -2,6 +2,8 @@ import React from 'react';
 
 import { ScrollView, Text, View, TouchableOpacity, Button } from 'react-native';
 
+import GradientButton from 'react-native-gradient-buttons';
+
 import styles from './style';
 
 const Home = ({ navigation }) => {
@@ -43,11 +45,23 @@ const Home = ({ navigation }) => {
                 </Text>
             </View>
 
-            <TouchableOpacity style={styles.buttonGT} onPress={() => navigation.navigate('Cadastro')}>
-                <Text style={styles.buttonGText}>
+            <View style={styles.buttonGT}>
+                <GradientButton
+                    style={{ marginVertical: 8, marginTop: 20 }}
+                    textStyle={{ fontSize: 26, color: '#212121' }}
+                    gradientBegin="#ffff5d"
+                    gradientEnd="#ffeb3b"
+                    gradientDirection="diagonal"
+                    height={80}
+                    width={200}
+                    radius={15}
+                    impact
+                    impactStyle='Light'
+                    onPressAction={() => navigation.navigate('Cadastro')}
+                >
                     GERAR TREINO
-                    </Text>
-            </TouchableOpacity>
+                </GradientButton>
+            </View>
 
             <ScrollView style={styles.viewTraining}>
                 <Text></Text>

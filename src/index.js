@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack'
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -32,7 +32,9 @@ function MyStack() {
                 name="Cadastro"
                 component={Cadastro}
                 options={{
-                    headerTintColor: '#000'
+                    headerTintColor: '#000',
+                    cardStyleInterpolator:
+                        CardStyleInterpolators.forHorizontalIOS,
                 }} />
 
         </Stack.Navigator>

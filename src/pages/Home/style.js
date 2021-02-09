@@ -6,9 +6,6 @@ export default StyleSheet.create({
     container: {
         backgroundColor: '#212121',
     },
-    appbar: {
-        backgroundColor: '#ffeb3b',
-    },
     cump: {
         paddingTop: 30,
         color: '#fff',
@@ -40,15 +37,7 @@ export default StyleSheet.create({
     },
     buttonGT: {
         flex: 1,
-        marginHorizontal: 100,
         alignItems: 'center',
-        backgroundColor: '#ffeb3b',
-        borderRadius: 5,
-        marginTop: 20,
-    },
-    buttonGText: {
-        fontSize: 20,
-        color: '#212121',
     },
     topo: {
         backgroundColor: '#101010',
