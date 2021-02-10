@@ -3,6 +3,7 @@ import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/
 
 import Home from "../pages/Home";
 import Cadastro from "../pages/Cadastros";
+import Treinos from "../pages/Treinos";
 
 const Stack = createStackNavigator();
 
@@ -39,6 +40,15 @@ const CadastroStackNavigator = () => {
                     cardStyleInterpolator:
                         CardStyleInterpolators.forHorizontalIOS,
                 }} />
+        </Stack.Navigator>
+    );
+}
+
+const TreinoStackNavigator = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name='Treinos' />
         </Stack.Navigator>
     );
 }

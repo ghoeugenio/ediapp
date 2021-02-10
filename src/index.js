@@ -12,38 +12,10 @@ import { StatusBar, Text, TouchableOpacity, Button, View } from 'react-native';
 
 import { HomeStackNavigator, CadastroStackNavigator } from './navigation/StackNavigation';
 
+import { Feather } from '@expo/vector-icons';
+
 import Home from './pages/Home';
 import Cadastro from './pages/Cadastros';
-
-const Stack = createStackNavigator();
-
-function MyStack() {
-
-    return (
-
-        <Stack.Navigator>
-
-            <Stack.Screen
-                name="EDIAPP"
-                component={Home}
-                options={{
-                    headerTitleAlign: 'center',
-                    headerTintColor: '#212121',
-                    headerStyle: { backgroundColor: '#ffeb3b' }
-                }} />
-
-            <Stack.Screen
-                name="Cadastro"
-                component={Cadastro}
-                options={{
-                    headerTintColor: '#000',
-                    cardStyleInterpolator:
-                        CardStyleInterpolators.forHorizontalIOS,
-                }} />
-
-        </Stack.Navigator>
-    );
-}
 
 const Tab = createBottomTabNavigator();
 
@@ -51,7 +23,15 @@ const BottomTabNavigator = () => {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={HomeStackNavigator} />
-            <Tab.Screen name="Cadastro" component={CadastroStackNavigator} />
+            <Tab.Screen
+                name="Cadastro"
+                component={CadastroStackNavigator}
+                options={{
+                    tabBarIcon: () => (
+                        <Feather name="list" size={26} color="black" />
+                    ),
+                }}
+            />
         </Tab.Navigator>
     );
 };
