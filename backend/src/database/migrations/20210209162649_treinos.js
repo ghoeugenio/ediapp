@@ -1,7 +1,11 @@
 
 exports.up = function (knex) {
     return knex.schema.createTable('treino', function (table) {
-        table.string('musculos').primary();
+        table.increments('id');
+
+        table.string('musculos').notNullable();
+        table.string('exercicio').notNullable();
+        table.string('info').notNullable();
     });
 };
 
