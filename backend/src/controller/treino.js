@@ -1,12 +1,34 @@
 const connection = require('../database/connection');
 
+const presave_muscles = [
+    'peito',
+    'costas',
+    'ombro',
+    'trapezio',
+    'abdomem',
+    'biceps',
+    'triceps',
+    'antebraco',
+    'quadriceps',
+    'posterior',
+    'panturrilha',
+];
+
+var i;
+
 module.exports = {
 
     async index(request, response) {
-        const { musculo } = request.params;
+        const { list } = request.params;
+
+        if (list == 'treino') {
+            const treino = await connection('treino').select('musculos', 'exercicio', 'info');
+
+            return response.json(treino);
+        }
 
         const exercicio = await connection('treino')
-            .where('musculos', musculo)
+            .where('musculos', list)
             .select('exercicio', 'info');
 
         return response.json(exercicio);
@@ -14,6 +36,14 @@ module.exports = {
 
     async create(request, response) {
         const { musculos, exercicio, info } = request.body;
+
+        for (i = 0; i < 11; i++) {
+
+            if (exercicio == presave_muscles[i]) {
+
+                return response.json({ status: 'insira um exercicio valido' })
+            }
+        }
 
         await connection('treino').insert({
             musculos,
@@ -26,23 +56,29 @@ module.exports = {
 
     async delete(request, response) {
 
-        const { exercicio } = request.params;
+        const { paras } = request.params;
+
+        if (paras == 'treino') {
+            await connection('treino').delete();
+
+            return response.json({ status: 'ficha deletada' });
+        }
+        for (i = 0; i < 11; i++) {
+
+            if (paras == presave_muscles[i]) {
+
+                await connection('treino')
+                    .where('musculos', paras)
+                    .delete();
+
+                return response.json({ status: 'musculo deletado' });
+            }
+        }
 
         await connection('treino')
-            .where('exercicio', exercicio)
+            .where('exercicio', paras)
             .delete();
 
-        return response.status(204).send();
+        return response.json({ status: 'exercicio deletado' });
     },
-
-    async delmuscle(request, response) {
-
-        const { musculo } = request.params;
-
-        await connection('treino')
-            .where('musculos', musculo)
-            .delete();
-
-        return response.status(204).send();
-    }
 }

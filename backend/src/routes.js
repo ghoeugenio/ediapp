@@ -4,12 +4,10 @@ const Treino = require('./controller/treino');
 
 const routes = express.Router();
 
-routes.get('/treino/:musculo', Treino.index);
+routes.get('/treino/:list', Treino.index);
 
 routes.post('/treino', Treino.create);
 
-routes.delete('/treino/:exercicio', Treino.delete);
-
-routes.delete('/treino/:musculo', Treino.delmuscle);
+routes.delete('/treino/:paras', Treino.delete);
 
 module.exports = routes;

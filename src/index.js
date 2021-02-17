@@ -10,28 +10,42 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 import { StatusBar, Text, TouchableOpacity, Button, View } from 'react-native';
 
-import { HomeStackNavigator, CadastroStackNavigator } from './navigation/StackNavigation';
+import { HomeStackNavigator, CadastroStackNavigator, FeedStackNavigator } from './navigation/StackNavigation';
 
-import { Feather } from '@expo/vector-icons';
-
-import Home from './pages/Home';
-import Cadastro from './pages/Cadastros';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+
     return (
-        <Tab.Navigator>
-            <Tab.Screen name="Home" component={HomeStackNavigator} />
+
+        <Tab.Navigator
+            tabBarOptions={{
+                style: { backgroundColor: "#ffeb3b" }
+            }}
+        >
+
             <Tab.Screen
-                name="Cadastro"
-                component={CadastroStackNavigator}
+                name="Home"
+                component={HomeStackNavigator}
                 options={{
                     tabBarIcon: () => (
-                        <Feather name="list" size={26} color="black" />
+                        <FontAwesome name="home" size={26} color="#212121" />
                     ),
                 }}
             />
+
+            <Tab.Screen
+                name="Feed"
+                component={FeedStackNavigator}
+                options={{
+                    tabBarIcon: () => (
+                        <FontAwesome name="feed" size={26} color="#212121" />
+                    ),
+                }}
+            />
+
         </Tab.Navigator>
     );
 };
