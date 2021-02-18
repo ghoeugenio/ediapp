@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { createStackNavigator, CardStyleInterpolators } from "@react-navigation/stack";
 
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Menu, Provider } from 'react-native-paper';
 
 import { Entypo } from '@expo/vector-icons';
 
@@ -12,6 +13,39 @@ import Feed from "../pages/Feed";
 
 
 const Stack = createStackNavigator();
+
+const Menuzin = () => {
+
+    const [visible, setVisible] = useState(false);
+
+    const toogleMenu = () => {
+        if (!visible) {
+            setVisible(true)
+        }
+        else {
+            setVisible(false)
+        }
+    }
+
+    return (
+        <Provider>
+            <Menu
+                visible={visible}
+                anchor={
+                    <TouchableOpacity
+                        onPress={() => toogleMenu()}
+                        title='info'>
+                        <Entypo style={{ marginRight: 4 }} name="dots-three-vertical" size={18} color="#212121" />
+                    </TouchableOpacity>}>
+
+                <Menu.Item onPress={() => alert('opcao um')} title={'opcao um'} />
+                <Menu.Item onPress={() => alert('opcao dois')} title={'opcao dois'} />
+            </Menu>
+        </Provider>
+
+    );
+
+}
 
 const HomeStackNavigator = () => {
     return (
@@ -24,12 +58,7 @@ const HomeStackNavigator = () => {
                     headerTintColor: '#212121',
                     headerStyle: { backgroundColor: '#ffeb3b' },
                     headerRight: () => (
-                        <TouchableOpacity
-                            onPress={() => alert('bnutao')}
-                            title='info'>
-                            <Entypo style={{ marginRight: 4 }} name="dots-three-vertical" size={22} color="#212121" />
-
-                        </TouchableOpacity>
+                        <Menuzin />
                     )
                 }} />
             <Stack.Screen
@@ -78,4 +107,4 @@ const FeedStackNavigator = () => {
     );
 }
 
-export { HomeStackNavigator, CadastroStackNavigator, FeedStackNavigator };
+export { HomeStackNavigator, CadastroStackNavigator, FeedStackNavigator, TreinoStackNavigator, Menuzin };
