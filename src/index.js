@@ -10,7 +10,7 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 
 import { StatusBar, Text, TouchableOpacity, Button, View } from 'react-native';
 
-import { HomeStackNavigator, CadastroStackNavigator, FeedStackNavigator } from './navigation/StackNavigation';
+import { HomeStackNavigator, TreinoStackNavigator } from './navigation/StackNavigation';
 
 import { Feather, FontAwesome } from '@expo/vector-icons';
 
@@ -37,11 +37,11 @@ const BottomTabNavigator = () => {
             />
 
             <Tab.Screen
-                name="Feed"
-                component={FeedStackNavigator}
+                name="Treinos"
+                component={TreinoStackNavigator}
                 options={{
                     tabBarIcon: () => (
-                        <FontAwesome name="feed" size={26} color="#212121" />
+                        <FontAwesome name="list" size={24} color="black" />
                     ),
                 }}
             />

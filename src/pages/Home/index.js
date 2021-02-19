@@ -57,7 +57,6 @@ const Home = ({ navigation }) => {
                     radius={15}
                     impact
                     impactStyle='Light'
-                    onPressAction={() => navigation.navigate('Cadastro')}
                 >
                     GERAR TREINO
                 </GradientButton>

@@ -6,7 +6,7 @@ import styles from './style';
 
 const Treinos = () => (
     <ScrollView style={styles.container}>
-        <Text>
+        <Text style={styles.textest}>
             Treino
         </Text>
     </ScrollView>
